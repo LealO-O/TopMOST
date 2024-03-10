@@ -3,6 +3,10 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 from .ECR import ECR
+import ot
+
+from ot.coot import co_optimal_transport as coot
+from ot.coot import co_optimal_transport2 as coot2
 
 
 class ECRTM(nn.Module):
@@ -114,7 +118,8 @@ class ECRTM(nn.Module):
 
         loss_TM = recon_loss + loss_KL
 
-        loss_ECR = self.get_loss_ECR()
+        # loss_ECR = self.get_loss_ECR()
+        loss_ECR = coot2(self.topic_embeddings, self.word_embeddings,  log=False, verbose=False)
         loss = loss_TM + loss_ECR
 
         rst_dict = {
