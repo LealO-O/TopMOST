@@ -7,7 +7,7 @@ from topmost.utils import static_utils
 
 
 class BasicTrainer:
-    def __init__(self, model, dataset_handler, epochs=330, learning_rate=0.002, batch_size=200, lr_scheduler=None, lr_step_size=125, log_interval=5):
+    def __init__(self, model, dataset_handler, epochs=250, learning_rate=0.002, batch_size=200, lr_scheduler=None, lr_step_size=125, log_interval=5):
         self.model = model
         self.dataset_handler = dataset_handler
         self.epochs = epochs
